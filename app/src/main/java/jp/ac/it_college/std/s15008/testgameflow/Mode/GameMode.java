@@ -86,12 +86,12 @@ public class GameMode {
     // 描画処理
     public void draw(Canvas canvas) {
         //Log.d(TAG, "IntroMode.draw()実行中");
-        canvas.drawText("Intro Mode", canvas.getWidth()/2, canvas.getHeight()/2, paintText);
+        canvas.drawText("Game Mode", canvas.getWidth()/2, canvas.getHeight()/2, paintText);
         canvas.drawText(
                 String.format("TouchX : %f\nTouchY : %f", mTouchX, mTouchY),
                 canvas.getWidth()/2, canvas.getHeight()/2 + 100, paintText);
 
-        mMyButton.draw(canvas);
+//        mMyButton.draw(canvas);
     }
 
 }

@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.Timer;
+
 import jp.ac.it_college.std.s15008.testgameflow.Mode.GameMode;
 import jp.ac.it_college.std.s15008.testgameflow.Mode.IntroMode;
 
@@ -48,7 +50,7 @@ public class GameView extends View {
         // ゲームモードオブジェクト
         mMode = Mode.INTRO;
         mGameMode = new GameMode();
-        mIntroMode = new IntroMode();
+        mIntroMode = new IntroMode(context);
 
         // タッチイベント関係
         mTouchX = 0f;
@@ -81,12 +83,14 @@ public class GameView extends View {
             mIntroMode.update(canvas, mMotionEvent);
             mIntroMode.draw(canvas);
 
+
             // モード遷移
             if (mIntroMode.mNextMode != mIntroMode.mCurrentMode) {
                 mMode = mIntroMode.mNextMode;
                 invalidate();
             }
         } else if (mMode == Mode.GAME) {
+            mGameMode.draw(canvas);
             Log.d(TAG, "ゲームモード");
         } else if (mMode == Mode.OVER) {
             Log.d(TAG, "ゲームオーバーモード");
